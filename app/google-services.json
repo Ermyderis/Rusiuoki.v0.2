@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "919475922919",
+    "firebase_url": "https://rusiuokidb-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "rusiuokidb",
+    "storage_bucket": "rusiuokidb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919475922919:android:a4a62ea18f0bfe75a63f42",
+        "android_client_info": {
+          "package_name": "com.example.rusiuoki"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919475922919-ftc481lv953bbq7m7i8nno73ld2m8jg7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf3IZUmuANFeks7HPwyO6K69xU0mdw7W0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919475922919-ftc481lv953bbq7m7i8nno73ld2m8jg7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
