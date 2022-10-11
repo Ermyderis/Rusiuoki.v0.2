@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Rusiuoki</string>
+
+    <string-array name="TrashType">
+        <item>-Pasirinkti-</item>
+        <item>Plastikas</item>
+        <item>Popierius</item>
+        <item>Metalas</item>
+        <item>Kita</item>
+
+    </string-array>
+
+    <string-array name="TrashPlace">
+        <item>Mišrios atliekos</item>
+        <item>Plastiko/Popieriaus konteineris</item>
+        <item>Stiklo konteineris</item>
+        <item>Didelių gabaritų aikštelės</item>
+        <item>Elektronikos konteineris</item>
+        <item>Kita</item>
+
+    </string-array>
 </resources>

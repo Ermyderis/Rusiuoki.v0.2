@@ -25,13 +25,12 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
         android:text="Login"
-        android:textSize="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/appBar"
-        />
+        android:textSize="30dp" />
 
     <EditText
 
@@ -61,12 +60,11 @@
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         android:layout_below="@id/editLoginPassword"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
-        android:text="Login"
-        />
+        android:layout_marginRight="30dp"
+        android:text="Login" />
 
     <ProgressBar
         android:id="@+id/progressBar"

@@ -2,6 +2,7 @@ package com.example.rusiuoki;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,10 +17,19 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private MaterialToolbar topBar;
+    public CardView barCode, itemCont, itemByWord, helpWindow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        barCode = (CardView) findViewById(R.id.barCode);
+        barCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openChoseBarcodeScanOrWrite();
+            }
+        });
 
         topBar = findViewById(R.id.topAppBar);
         topBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -50,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
     }
     private void turnOnHome(){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void openChoseBarcodeScanOrWrite(){
+        Intent intent = new Intent(this, ChoseBarcodeScanOrWrite.class);
         startActivity(intent);
         finish();
     }
