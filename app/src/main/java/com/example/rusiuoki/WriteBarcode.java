@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -17,20 +18,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 
-public class ChoseBarcodeScanOrWrite extends AppCompatActivity implements View.OnClickListener{
-
-    Button scanBarCode;
-    Button writeBarCode;
-    DatabaseReference databaseReference;
+public class WriteBarcode extends AppCompatActivity {
     private MaterialToolbar topBar;
-
+    String barcodeString;
+    EditText barcodeEditText;
+    Button searchByBarCode;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chose_barcode_scan_or_write);
+        setContentView(R.layout.activity_write_barcode);
 
         topBar = findViewById(R.id.topAppBar);
         topBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -51,50 +49,19 @@ public class ChoseBarcodeScanOrWrite extends AppCompatActivity implements View.O
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("BarcodeDataByUsers");
 
-        scanBarCode = (Button) findViewById(R.id.buttonScanBarCode);
-        scanBarCode.setOnClickListener(this);
+        barcodeEditText = (EditText) findViewById(R.id.barcodeEditText);
+        searchByBarCode = findViewById(R.id.searchByBarCode);
 
-        writeBarCode = (Button) findViewById(R.id.buttonWriteBarCode);
-        writeBarCode.setOnClickListener(new View.OnClickListener() {
+        searchByBarCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openWriteBarCode();
-            }
-        });
-    }
-    public void openWriteBarCode(){
-        Intent intent = new Intent(this, WriteBarcode.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void onClick(View view) {
-        scanCode();
-    }
-
-    private void scanCode(){
-        IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.setCaptureActivity(CaptureAct.class);
-        integrator.setOrientationLocked(true);
-        integrator.setBeepEnabled(false);
-        integrator.setTimeout(10000);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
-        integrator.setPrompt("Brūkšninio kodo skanavimas");
-        integrator.initiateScan();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() != null) {
-                String barcodeForSearch = result.getContents().toString();
+                String barcodeForSearch = barcodeEditText.getText().toString();
                 databaseReference.child(barcodeForSearch).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         BarCode barCode = snapshot.getValue(BarCode.class);
-                        if(barCode != null ){
-                            Intent intent = new Intent(ChoseBarcodeScanOrWrite.this, BarcodeDataExist.class);
+                        if(barCode != null){
+                            Intent intent = new Intent(WriteBarcode.this, BarcodeDataExist.class);
                             intent.putExtra("fullBarcode", barcodeForSearch);
                             intent.putExtra("barCodePackageName", barCode.packageName.toString());
                             intent.putExtra("barCodePackageType", barCode.packageType.toString());
@@ -103,11 +70,8 @@ public class ChoseBarcodeScanOrWrite extends AppCompatActivity implements View.O
                             finish();
                         }
                         else{
-                            Intent intent = new Intent(ChoseBarcodeScanOrWrite.this, BarCodeData.class);
-                            intent.putExtra("barCodeContent", result.getContents());
-                            startActivity(intent);
-                            finish();
-
+                            Toast.makeText(WriteBarcode.this, "Rezultatų nerasta", Toast.LENGTH_LONG).show();
+                            turnOnHome();
                         }
                     }
 
@@ -116,16 +80,15 @@ public class ChoseBarcodeScanOrWrite extends AppCompatActivity implements View.O
                     }
                 });
 
-
-            } else {
-                Toast.makeText(this, "Nėra rezultatų", Toast.LENGTH_LONG).show();
             }
-        }else{
-            super.onActivityResult(requestCode, resultCode, data);
-
-        }
+        });
     }
 
+    public void openbarcodeData(){
+        Intent intent = new Intent(this, BarCodeData.class);
+        intent.putExtra("barCodeContent", barcodeString);
+        startActivity(intent);
+    }
     private void turnOnLogin(){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

@@ -3,6 +3,7 @@ package com.example.rusiuoki;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,10 +28,19 @@ public class LogedActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
     private MaterialToolbar topBar;
+    public CardView logedBarcodeCard;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loged);
+
+        logedBarcodeCard = (CardView) findViewById(R.id.logedBarcodeCard);
+        logedBarcodeCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openBarcodeList();
+            }
+        });
 
         topBar = findViewById(R.id.topAppBarLoged);
         topBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -78,6 +88,11 @@ public class LogedActivity extends AppCompatActivity {
     }
     private void turnOnHome(){
         Intent intent = new Intent(this, LogedActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    private void openBarcodeList(){
+        Intent intent = new Intent(this, LogedDatabaseBarcodeList.class);
         startActivity(intent);
         finish();
     }

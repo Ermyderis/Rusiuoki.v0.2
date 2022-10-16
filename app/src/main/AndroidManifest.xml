@@ -15,6 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rusiuoki">
         <activity
+            android:name=".LogedDatabaseBarcodeList"
+            android:exported="false" />
+        <activity
+            android:name=".WriteBarcode"
+            android:exported="false" />
+        <activity
+            android:name=".BarcodeDataExist"
+            android:exported="false" />
+        <activity
             android:name=".BarCodeData"
             android:exported="false" />
         <activity
