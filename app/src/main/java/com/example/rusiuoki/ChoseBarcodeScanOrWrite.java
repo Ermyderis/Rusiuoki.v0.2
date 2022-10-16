@@ -26,7 +26,12 @@ public class ChoseBarcodeScanOrWrite extends AppCompatActivity implements View.O
     Button writeBarCode;
     DatabaseReference databaseReference;
     private MaterialToolbar topBar;
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ChoseBarcodeScanOrWrite.this, MainActivity.class));
+        finish();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

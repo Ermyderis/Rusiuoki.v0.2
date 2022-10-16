@@ -25,6 +25,12 @@ public class BarCodeData extends AppCompatActivity {
     Button buttonSave;
     String choiceType, choiceTrashePlace;
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(BarCodeData.this, ChoseBarcodeScanOrWrite.class));
+        finish();
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar_code_data);

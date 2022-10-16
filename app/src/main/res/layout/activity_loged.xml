@@ -173,7 +173,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/logedHelpWindow"
+            android:id="@+id/logedRegisterUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="1"
@@ -184,8 +184,21 @@
             android:layout_margin="10dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="8dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="Registruoti vartotoją"
+                android:textAlignment="center"
+                android:textStyle="normal|bold" />
 
-
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
 

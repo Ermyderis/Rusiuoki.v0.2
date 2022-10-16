@@ -14,6 +14,12 @@ public class BarcodeDataExist extends AppCompatActivity {
     private MaterialToolbar topBar;
     TextView textViewFullbarcdoe, textViewPackageName, textViewTrashType, textViewTrashPlace;
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(BarcodeDataExist.this, ChoseBarcodeScanOrWrite.class));
+        finish();
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barcode_data_exist);

@@ -43,6 +43,8 @@ public class LogedDatabaseBarcodeList extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+
         db = FirebaseDatabase.getInstance();
         databaseReference = db.getReference("BarcodeDataByUsers");
         barcodeArrayList = new ArrayList<BarCode>();
@@ -57,7 +59,6 @@ public class LogedDatabaseBarcodeList extends AppCompatActivity {
                     if(barCode.activityType.toString().equals("notAproved")) {
                         barcodeArrayList.add(barCode);
                     }
-
 
                 }
                 myAdapter.notifyDataSetChanged();

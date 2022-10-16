@@ -28,7 +28,14 @@ public class LogedActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
     private MaterialToolbar topBar;
-    public CardView logedBarcodeCard;
+    public String emailInLoged;
+    public CardView logedBarcodeCard, logedRegisterUser;
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(LogedActivity.this, LogedActivity.class));
+        finish();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +46,43 @@ public class LogedActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openBarcodeList();
+            }
+        });
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        userID = user.getUid();
+
+        final TextView textViewLastName = findViewById(R.id.textViewLastName);
+
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+                if(userProfile != null){
+                    emailInLoged = userProfile.email;
+                    textViewLastName.setText(emailInLoged);
+                }
+                else{
+                    textViewLastName.setText("Cant Show");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        logedRegisterUser = (CardView) findViewById(R.id.logedRegisterUser);
+        logedRegisterUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(LogedActivity.this, RegisterActivity.class);
+                intent.putExtra("userEmail", emailInLoged);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -59,27 +103,6 @@ public class LogedActivity extends AppCompatActivity {
                 return false;
             }
         });
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
-
-        final TextView textViewLastName = findViewById(R.id.textViewLastName);
-
-        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
-                if(userProfile != null){
-                    String email = userProfile.email;
-                    textViewLastName.setText(email);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
     private void showMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
@@ -96,4 +119,5 @@ public class LogedActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 }

@@ -48,11 +48,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    private void turnOnregister(){
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
-        finish();
-    }
     private void turnOnLogin(){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

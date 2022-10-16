@@ -27,7 +27,12 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressBar progresBar;
     private MaterialToolbar topBar;
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        finish();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
