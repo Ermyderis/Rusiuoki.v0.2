@@ -29,7 +29,7 @@ public class LogedActivity extends AppCompatActivity {
     private String userID;
     private MaterialToolbar topBar;
     public String emailInLoged;
-    public CardView logedBarcodeCard, logedRegisterUser;
+    public CardView logedBarcodeCard, logedRegisterUser, logedItemContent;
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -40,6 +40,14 @@ public class LogedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loged);
+
+        logedItemContent = (CardView) findViewById(R.id.logedItemContent);
+        logedItemContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openTrachYpeCut();
+            }
+        });
 
         logedBarcodeCard = (CardView) findViewById(R.id.logedBarcodeCard);
         logedBarcodeCard.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +124,11 @@ public class LogedActivity extends AppCompatActivity {
     }
     private void openBarcodeList(){
         Intent intent = new Intent(this, LogedDatabaseBarcodeList.class);
+        startActivity(intent);
+        finish();
+    }
+    private void openTrachYpeCut(){
+        Intent intent = new Intent(this, TrashTypeCut.class);
         startActivity(intent);
         finish();
     }

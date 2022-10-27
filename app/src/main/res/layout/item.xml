@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
-    android:layout_margin="16dp"
+    android:layout_margin="5dp"
     >
 
     <LinearLayout
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="Brūkšninis kodas:  "
             android:textColor="@color/black"
-            android:textSize="10sp"/>
+            android:textSize="13sp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
             android:layout_marginStart="8dp"
             android:text="Barcode"
             android:textColor="@color/black"
-            android:textSize="10sp"/>
+            android:textSize="13sp"/>
 
         </LinearLayout>
 
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:text="Pavadinimas ant pakuotės: "
                 android:textColor="@color/black"
-                android:textSize="10sp"/>
+                android:textSize="13sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
                 android:layout_marginStart="8dp"
                 android:text="Name"
                 android:textColor="@color/black"
-                android:textSize="10sp"/>
+                android:textSize="13sp"/>
 
         </LinearLayout>
 
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:text="Pakuotės tipas: "
                 android:textColor="@color/black"
-                android:textSize="10sp"/>
+                android:textSize="13sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                 android:layout_marginStart="8dp"
                 android:text="Type"
                 android:textColor="@color/black"
-                android:textSize="10sp"/>
+                android:textSize="13sp"/>
 
         </LinearLayout>
 
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:text="Kaip atsikratyti atlieka: "
                 android:textColor="@color/black"
-                android:textSize="10sp"/>
+                android:textSize="13sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,7 +109,7 @@
                 android:layout_marginStart="8dp"
                 android:text="RecyclePlace"
                 android:textColor="@color/black"
-                android:textSize="10sp"/>
+                android:textSize="13sp"/>
 
         </LinearLayout>
 
@@ -124,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:text="Statusas: "
                 android:textColor="@color/black"
-                android:textSize="10sp"/>
+                android:textSize="13sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -133,7 +133,29 @@
                 android:layout_marginStart="8dp"
                 android:text="Patvirtinta / Nepatvirtina"
                 android:textColor="@color/black"
-                android:textSize="10sp"/>
+                android:textSize="13sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/buttonWrapperEdit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:text="Patvirtinti"/>
+
+        <Button
+            android:id="@+id/buttonWrapperDelete"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:text="Ištrinti"/>
 
         </LinearLayout>
 

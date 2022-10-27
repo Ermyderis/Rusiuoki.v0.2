@@ -3,16 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2335" />
+        <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2335" />
+        <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/drawable/rounded.xml" value="0.2335" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/activity_bar_code_data.xml" value="0.25" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/activity_barcode_data_exist.xml" value="0.24592391304347827" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/activity_chose_barcode_scan_or_write.xml" value="0.25" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/activity_loged.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/activity_loged_database_barcode_list.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/activity_loged_editable_view_holder.xml" value="0.3625" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/activity_login.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/activity_main.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/activity_register.xml" value="0.18478260869565216" />
+        <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/activity_trash_type_cut.xml" value="0.3625" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/activity_write_barcode.xml" value="0.24592391304347827" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/item.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/layout/update_popup.xml" value="0.3484375" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/menu/loged_menu.xml" value="0.2109375" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/menu/nav_menu.xml" value="0.2109375" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/menu/notloged_menu.xml" value="0.2109375" />

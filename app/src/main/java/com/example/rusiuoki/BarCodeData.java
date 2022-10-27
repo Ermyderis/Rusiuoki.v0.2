@@ -23,7 +23,7 @@ public class BarCodeData extends AppCompatActivity {
     private Spinner spinnerTrashType, spinnerTrashPlace;
     DatabaseReference databaseReference;
     Button buttonSave;
-    String choiceType, choiceTrashePlace;
+    private String choiceType, choiceTrashePlace;
     @Override
     public void onBackPressed() {
         super.onBackPressed();

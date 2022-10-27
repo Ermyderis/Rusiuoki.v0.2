@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rusiuoki">
         <activity
+            android:name=".TrashTypeCut"
+            android:exported="false" />
+        <activity
+            android:name=".LogedEditableViewHolder"
+            android:exported="false" />
+        <activity
             android:name=".LogedDatabaseBarcodeList"
             android:exported="false" />
         <activity

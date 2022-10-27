@@ -129,7 +129,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    android:text="Įvesti pakuotės medžagų trumpinimą"
+                    android:text="Įtraukti į duomenų bazę pakuotės medžagų trumpinimą"
                     android:textAlignment="center"
                     android:textStyle="normal|bold" />
             </LinearLayout>

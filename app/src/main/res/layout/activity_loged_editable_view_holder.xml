@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LogedEditableViewHolder">
+
+
+    <TextView
+        android:id="@+id/holderTexxView1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#88A16F"
+        android:gravity="center"
+        android:text="Patvirtinti"
+        android:textColor="#FFF"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/holderTexxView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Pavadinimas ant pakuotės"
+        android:layout_below="@id/holderTexxView1"/>
+
+    <EditText
+        android:id="@+id/edittextPopupPackageName"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/holderTexxView2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/holderTexxView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Pakuotės tipas"
+        android:layout_below="@id/edittextPopupPackageName"/>
+
+    <Spinner
+        android:id="@+id/spinnerPopupTrashCategory"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/holderTexxView3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded" />
+
+    <TextView
+        android:id="@+id/holderTexxView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Pakuotės atsikratymo vieta"
+        android:layout_below="@id/spinnerPopupTrashCategory"/>
+
+    <Spinner
+        android:id="@+id/spinnerPopupTrashPlac"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/holderTexxView4"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded" />
+    <TextView
+        android:id="@+id/holderTexxView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Pasirinkite aktyvumą"
+        android:layout_below="@id/spinnerPopupTrashPlac"/>
+
+    <Switch
+        android:id="@+id/switchPopupActive"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/holderTexxView5"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded"
+        android:text="Patvirtinta" />
+
+    <Button
+        android:id="@+id/buttonPopupSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="50dp"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:text="Įsaugoti"
+        android:background="@drawable/rounded"
+        android:gravity="center"
+        android:layout_below="@id/switchPopupActive"/>
+
+
+</RelativeLayout>
