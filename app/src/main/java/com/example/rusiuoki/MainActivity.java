@@ -31,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        itemCont = findViewById(R.id.itemContent);
+        itemCont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openCutContent();
+            }
+        });
+
         topBar = findViewById(R.id.topAppBar);
         topBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -61,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void openChoseBarcodeScanOrWrite(){
         Intent intent = new Intent(this, ChoseBarcodeScanOrWrite.class);
+        startActivity(intent);
+        finish();
+    }
+    private void openCutContent(){
+        Intent intent = new Intent(this, TrasTypeCutContent.class);
         startActivity(intent);
         finish();
     }

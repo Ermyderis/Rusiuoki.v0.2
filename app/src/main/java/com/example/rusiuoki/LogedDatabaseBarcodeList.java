@@ -2,14 +2,20 @@ package com.example.rusiuoki;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,11 +27,14 @@ import java.util.EventListener;
 
 public class LogedDatabaseBarcodeList extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    ArrayList<BarCode> barcodeArrayList;
-    BarcodeItemsAdapter myAdapter;
-    DatabaseReference databaseReference;
-    FirebaseDatabase db;
+    private RecyclerView recyclerView;
+    private ArrayList<BarCode> barcodeArrayList;
+    private BarcodeItemsAdapter myAdapter;
+    private DatabaseReference databaseReference;
+    private FirebaseDatabase db;
+    private TextView textViewEmptyList;
+    private MaterialToolbar topBar;
+    boolean check = false;
 
     @Override
     public void onBackPressed() {
@@ -44,21 +53,49 @@ public class LogedDatabaseBarcodeList extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-
+        textViewEmptyList = findViewById(R.id.textViewEmptyList);
+        textViewEmptyList.setVisibility(View.GONE);
         db = FirebaseDatabase.getInstance();
         databaseReference = db.getReference("BarcodeDataByUsers");
         barcodeArrayList = new ArrayList<BarCode>();
         myAdapter = new BarcodeItemsAdapter(LogedDatabaseBarcodeList.this, barcodeArrayList);
         recyclerView.setAdapter(myAdapter);
 
+
+        final TextView textViewLastName = findViewById(R.id.textViewLastName);
+        String userEmail = getIntent().getStringExtra("userEmail");
+        textViewLastName.setText(userEmail);
+        topBar = findViewById(R.id.topAppBarLoged);
+        topBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.logedout_menu:
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(LogedDatabaseBarcodeList.this, "Atsijungta nuo paskyros", Toast.LENGTH_LONG).show();
+                        showMainActivity();
+                        return true;
+                    case R.id.main_menu:
+                        turnOnHome();
+                        return true;
+                }
+                return false;
+            }
+        });
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     BarCode barCode = dataSnapshot.getValue(BarCode.class);
-                    if(barCode.activityType.toString().equals("notAproved")) {
+                    if (barCode.activityType.toString().equals("notAproved")) {
                         barcodeArrayList.add(barCode);
+                        check = true;
                     }
+                    if (check == false){
+                        textViewEmptyList.setVisibility(View.VISIBLE);
+                    }
+
 
                 }
                 myAdapter.notifyDataSetChanged();
@@ -71,6 +108,14 @@ public class LogedDatabaseBarcodeList extends AppCompatActivity {
         });
 
     }
-
-
+    private void showMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
+    private void turnOnHome(){
+        Intent intent = new Intent(this, LogedActivity.class);
+        startActivity(intent);
+        finish();
+    }
+}

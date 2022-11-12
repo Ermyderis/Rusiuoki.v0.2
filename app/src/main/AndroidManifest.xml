@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rusiuoki">
         <activity
+            android:name=".TrashTypeCutContentShow"
+            android:exported="false" />
+        <activity
+            android:name=".TrasTypeCutContent"
+            android:exported="false" />
+        <activity
             android:name=".TrashTypeCut"
             android:exported="false" />
         <activity

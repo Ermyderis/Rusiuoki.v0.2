@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogedDatabaseBarcodeList">
+    tools:context=".TrashTypeCutContentShow">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -14,38 +14,37 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/topAppBarLoged"
-            app:menu="@menu/loged_menu"
+            android:id="@+id/topAppBar"
+            app:menu="@menu/notloged_menu"
             >
-            <TextView
-                android:id="@+id/textViewLastName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Vartotojas"
-                />
 
         </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/appBar"
-        android:id="@+id/dataByBarcodeLoged"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <TextView
-        android:id="@+id/textViewEmptyList"
+
+        android:id="@+id/textViewContentTrashTypeCut"
         android:layout_width="match_parent"
-        android:layout_below="@+id/appBar"
         android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
-        android:visibility="gone"
         android:layout_marginRight="16dp"
-        android:text="Sąrašas šiuo metu tuščias"
-        android:textSize="30dp" />
+        android:textSize="20dp"
+        android:hint="HDPE" />
+    <TextView
 
+        android:id="@+id/textViewContentTrashTypeRecyclePlace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewContentTrashTypeCut"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="16dp"
+        android:textSize="20dp"
+        android:hint="Išmetimo vieta" />
 
 
 </RelativeLayout>

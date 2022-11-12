@@ -1,6 +1,7 @@
 package com.example.rusiuoki;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,10 +13,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 
@@ -41,7 +45,7 @@ public class BarcodeItemsAdapter extends RecyclerView.Adapter<BarcodeItemsAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder,int position) {
         final BarCode barcode = barcodeArrayList.get(position);
 
         holder.barCode.setText(barcode.barCode);
@@ -55,14 +59,6 @@ public class BarcodeItemsAdapter extends RecyclerView.Adapter<BarcodeItemsAdapte
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                //EditText packageName = view.findViewById(R.id.edittextPopupPackageName);
-                //Spinner spinnerTrashType = view.findViewById(R.id.spinnerPopupTrashCategory);
-                //Spinner spinnerTrashPlace = view.findViewById(R.id.spinnerPopupTrashPlac);
-                //Switch activityTipe = view.findViewById(R.id.switchPopupActive);
-
-                //Button btnSvaeChanges = view.findViewById(R.id.buttonPopupSave);
-
-                //packageName.setText(barcode.getPackageName());
 
                 bundle.putString("barcodeNumber", barcode.getBarCode());
                 bundle.putString("packageName", barcode.getPackageName());
@@ -73,7 +69,40 @@ public class BarcodeItemsAdapter extends RecyclerView.Adapter<BarcodeItemsAdapte
                 intent.putExtra("data", bundle);
                 context.startActivity(intent);
 
+            }
+        });
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder  = new AlertDialog.Builder(holder.packageName.getContext());
+                builder.setTitle("Ar tikrai norite ištrinti?");
+                builder.setPositiveButton("Ištrinti", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        FirebaseDatabase.getInstance().getReference().child("BarcodeDataByUsers").child(barcode.getBarCode()).removeValue();
+                        Toast.makeText(holder.packageName.getContext(), "Ištrinta", Toast.LENGTH_LONG).show();
+                        barcodeArrayList.remove(barcode);
+                        notifyDataSetChanged();
 
+                        Bundle bundle = new Bundle();
+
+                        bundle.putString("barcodeNumber", barcode.getBarCode());
+                        bundle.putString("packageName", barcode.getPackageName());
+                        bundle.putString("trashType", barcode.getPackageType());
+                        bundle.putString("trashPlace", barcode.getPackageRecyclePlace());
+                        bundle.putString("activityTipe", barcode.getActivityType());
+                        Intent intent = new Intent(context, LogedEditableViewHolder.class);
+                        intent.putExtra("data", bundle);
+                        context.startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(holder.packageName.getContext(), "Atšaukta", Toast.LENGTH_LONG).show();
+                    }
+                });
+                builder.show();
             }
         });
     }
@@ -101,4 +130,6 @@ public class BarcodeItemsAdapter extends RecyclerView.Adapter<BarcodeItemsAdapte
 
         }
     }
+
 }
+

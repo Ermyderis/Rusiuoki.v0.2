@@ -124,11 +124,13 @@ public class LogedActivity extends AppCompatActivity {
     }
     private void openBarcodeList(){
         Intent intent = new Intent(this, LogedDatabaseBarcodeList.class);
+        intent.putExtra("userEmail", emailInLoged);
         startActivity(intent);
         finish();
     }
     private void openTrachYpeCut(){
         Intent intent = new Intent(this, TrashTypeCut.class);
+        intent.putExtra("userEmail", emailInLoged);
         startActivity(intent);
         finish();
     }

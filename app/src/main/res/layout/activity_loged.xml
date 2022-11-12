@@ -159,7 +159,6 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/pen"
-
                     />
 
                 <TextView
@@ -190,11 +189,17 @@
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
                 android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/register"
+                    />
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:text="Registruoti vartotoją"
+                android:text="Registruoti naują vartotoją"
                 android:textAlignment="center"
                 android:textStyle="normal|bold" />
 

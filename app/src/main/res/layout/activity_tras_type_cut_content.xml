@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TrashTypeCut">
-
+    tools:context=".TrasTypeCutContent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -15,15 +14,9 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/topAppBarLoged"
-            app:menu="@menu/loged_menu"
+            android:id="@+id/topAppBar"
+            app:menu="@menu/notloged_menu"
             >
-            <TextView
-                android:id="@+id/textViewLastName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Vartotojas"
-                />
 
         </com.google.android.material.appbar.MaterialToolbar>
 
@@ -37,12 +30,12 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:text="Pakuotės tipą identifikuojantis trumpinimas"
+        android:text="Įveskite pakuotės tipą identifikuojantį trumpinimą"
         android:textSize="30dp" />
 
     <EditText
 
-        android:id="@+id/editTrashTypeCut"
+        android:id="@+id/editContentTrashTypeCut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView2"
@@ -51,35 +44,26 @@
         android:layout_marginRight="16dp"
         android:hint="HDPE" />
 
-    <EditText
-        android:id="@+id/editTrashTypeCutRecyclePlace"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTrashTypeCut"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="16dp"
-        android:hint="Vieta kur mesti atlieką"
-         />
 
     <Button
-        android:id="@+id/buttonSaveTrashCutInfo"
+        android:id="@+id/buttonContentSaveTrashCutInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTrashTypeCutRecyclePlace"
+        android:layout_below="@id/editContentTrashTypeCut"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="30dp"
-        android:text="Įsaugoti" />
+        android:text="Ieškoti" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progressBarContent"
         style="?android:attr/progressBarStyle"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:visibility="gone"
         android:layout_centerInParent="true"
 
-        android:layout_below="@id/editTrashTypeCutRecyclePlace"
+        android:layout_below="@id/editContentTrashTypeCut"
         />
+
 </RelativeLayout>
