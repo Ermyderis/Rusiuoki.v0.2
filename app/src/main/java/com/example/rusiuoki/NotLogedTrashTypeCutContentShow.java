@@ -2,12 +2,20 @@ package com.example.rusiuoki;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class TrashTypeCutContentShow extends AppCompatActivity {
+public class NotLogedTrashTypeCutContentShow extends AppCompatActivity {
 
     private TextView textViewContentTrashTypeCut, textViewContentTrashTypeRecyclePlace;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(NotLogedTrashTypeCutContentShow.this, MainActivity.class));
+        finish();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

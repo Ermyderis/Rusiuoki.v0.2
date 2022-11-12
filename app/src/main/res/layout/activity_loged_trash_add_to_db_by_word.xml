@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TrasTypeCutContent">
+    tools:context=".LogedTrashAddToDbByWord">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -14,9 +14,15 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/topAppBar"
-            app:menu="@menu/notloged_menu"
+            android:id="@+id/topAppBarLoged"
+            app:menu="@menu/loged_menu"
             >
+            <TextView
+                android:id="@+id/textViewLastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vartotojas"
+                />
 
         </com.google.android.material.appbar.MaterialToolbar>
 
@@ -30,30 +36,41 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:text="Įveskite pakuotės tipą identifikuojantį trumpinimą"
+        android:text="Įveskite atliekos žodį ir atsikratymo vietą"
         android:textSize="30dp" />
 
     <EditText
-
-        android:id="@+id/editContentTrashTypeCut"
+        android:id="@+id/edittextTrashWord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView2"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:hint="HDPE" />
+        android:hint="Veidrodis"
+        />
+
+    <EditText
+        android:id="@+id/edittextTrashThrowPlace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edittextTrashWord"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="16dp"
+        android:hint="Didelių gabaritų aikštelės"
+        />
 
 
     <Button
         android:id="@+id/buttonContentSaveTrashCutInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editContentTrashTypeCut"
+        android:layout_below="@id/edittextTrashThrowPlace"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="30dp"
-        android:text="Ieškoti" />
+        android:text="Įsaugoti" />
 
     <ProgressBar
         android:id="@+id/progressBarContent"
@@ -63,7 +80,7 @@
         android:visibility="gone"
         android:layout_centerInParent="true"
 
-        android:layout_below="@id/editContentTrashTypeCut"
+        android:layout_below="@id/edittextTrashWord"
         />
 
 </RelativeLayout>

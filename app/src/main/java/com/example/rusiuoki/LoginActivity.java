@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                         showLoged();
                     }else{
                         Toast.makeText(LoginActivity.this, "Nepavyko prisijungti", Toast.LENGTH_LONG).show();
+                        progresBar.setVisibility(View.GONE);
                         return;
                     }
                 }

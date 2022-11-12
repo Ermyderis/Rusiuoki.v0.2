@@ -8,12 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private MaterialToolbar topBar;
@@ -73,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
     private void openCutContent(){
-        Intent intent = new Intent(this, TrasTypeCutContent.class);
+        Intent intent = new Intent(this, NotLogedTrasTypeCutSearch.class);
         startActivity(intent);
         finish();
     }

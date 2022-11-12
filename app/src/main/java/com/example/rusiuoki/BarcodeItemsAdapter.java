@@ -79,11 +79,6 @@ public class BarcodeItemsAdapter extends RecyclerView.Adapter<BarcodeItemsAdapte
                 builder.setPositiveButton("Ištrinti", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        FirebaseDatabase.getInstance().getReference().child("BarcodeDataByUsers").child(barcode.getBarCode()).removeValue();
-                        Toast.makeText(holder.packageName.getContext(), "Ištrinta", Toast.LENGTH_LONG).show();
-                        barcodeArrayList.remove(barcode);
-                        notifyDataSetChanged();
-
                         Bundle bundle = new Bundle();
 
                         bundle.putString("barcodeNumber", barcode.getBarCode());
@@ -91,7 +86,7 @@ public class BarcodeItemsAdapter extends RecyclerView.Adapter<BarcodeItemsAdapte
                         bundle.putString("trashType", barcode.getPackageType());
                         bundle.putString("trashPlace", barcode.getPackageRecyclePlace());
                         bundle.putString("activityTipe", barcode.getActivityType());
-                        Intent intent = new Intent(context, LogedEditableViewHolder.class);
+                        Intent intent = new Intent(context, LogedDatabaseBarcodeList.class);
                         intent.putExtra("data", bundle);
                         context.startActivity(intent);
                     }

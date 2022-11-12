@@ -54,13 +54,43 @@ public class LogedDatabaseBarcodeList extends AppCompatActivity {
 
 
         textViewEmptyList = findViewById(R.id.textViewEmptyList);
-        textViewEmptyList.setVisibility(View.GONE);
+        textViewEmptyList.setVisibility(View.VISIBLE);
         db = FirebaseDatabase.getInstance();
         databaseReference = db.getReference("BarcodeDataByUsers");
         barcodeArrayList = new ArrayList<BarCode>();
         myAdapter = new BarcodeItemsAdapter(LogedDatabaseBarcodeList.this, barcodeArrayList);
         recyclerView.setAdapter(myAdapter);
 
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    BarCode barCode = dataSnapshot.getValue(BarCode.class);
+                    if (barCode != null && barCode.activityType.toString().equals("notAproved")) {
+                        textViewEmptyList.setVisibility(View.GONE);
+                        barcodeArrayList.add(barCode);
+                        check = true;
+                    }
+
+
+                }
+                myAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        if(getIntent().getBundleExtra("data")!=null){
+            Bundle bundle=getIntent().getBundleExtra("data");
+            FirebaseDatabase.getInstance().getReference().child("BarcodeDataByUsers").child(bundle.getString("barcodeNumber")).removeValue();
+            Toast.makeText(LogedDatabaseBarcodeList.this, "Ištrinta", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, LogedDatabaseBarcodeList.class);
+            startActivity(intent);
+            finish();
+        }
 
         final TextView textViewLastName = findViewById(R.id.textViewLastName);
         String userEmail = getIntent().getStringExtra("userEmail");
@@ -80,30 +110,6 @@ public class LogedDatabaseBarcodeList extends AppCompatActivity {
                         return true;
                 }
                 return false;
-            }
-        });
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    BarCode barCode = dataSnapshot.getValue(BarCode.class);
-                    if (barCode.activityType.toString().equals("notAproved")) {
-                        barcodeArrayList.add(barCode);
-                        check = true;
-                    }
-                    if (check == false){
-                        textViewEmptyList.setVisibility(View.VISIBLE);
-                    }
-
-
-                }
-                myAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 

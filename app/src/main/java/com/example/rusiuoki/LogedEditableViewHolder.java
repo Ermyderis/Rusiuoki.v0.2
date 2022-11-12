@@ -65,13 +65,11 @@ public class LogedEditableViewHolder extends AppCompatActivity {
                 if(swichActiveType.isChecked()){
                     aprovedOrNotAproved = "AprovedTrue";
                     updateData(barcodeNumber, trashName, packageType, choiceTrashePlace, aprovedOrNotAproved);
-                    Toast.makeText(LogedEditableViewHolder.this, "Pazymetą", Toast.LENGTH_LONG).show();
 
                 }
                 else{
                     aprovedOrNotAproved = "notAproved";
                     updateData(barcodeNumber, trashName, packageType, choiceTrashePlace, aprovedOrNotAproved);
-                    Toast.makeText(LogedEditableViewHolder.this, "Nepazymeta" , Toast.LENGTH_LONG).show();
                 }
             }
         });

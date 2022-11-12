@@ -18,19 +18,25 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class TrashTypeCut extends AppCompatActivity {
+import java.util.Locale;
+
+public class LogedTrashTypeCut extends AppCompatActivity {
     private Button buttonSaveTrashCutInfo;
     private EditText editTypeCut, editTrashTypeCutRecyclePlace;
     private DatabaseReference databaseReference;
     private ProgressBar progresBar;
     private MaterialToolbar topBar;
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(TrashTypeCut.this, LogedActivity.class));
+        startActivity(new Intent(LogedTrashTypeCut.this, LogedActivity.class));
         finish();
     }
     @Override
@@ -59,7 +65,7 @@ public class TrashTypeCut extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.logedout_menu:
                         FirebaseAuth.getInstance().signOut();
-                        Toast.makeText(TrashTypeCut.this, "Atsijungta nuo paskyros", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LogedTrashTypeCut.this, "Atsijungta nuo paskyros", Toast.LENGTH_LONG).show();
                         showMainActivity();
                         return true;
                     case R.id.main_menu:
@@ -73,24 +79,46 @@ public class TrashTypeCut extends AppCompatActivity {
         buttonSaveTrashCutInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String trashTypeCut = editTypeCut.getText().toString().toUpperCase().trim();
-                String trashTypeCutRecyclePlace  = editTrashTypeCutRecyclePlace.getText().toString().trim();
-                progresBar.setVisibility(View.VISIBLE);
-                TrashTypeCutInfo trashTypeCutInfo = new TrashTypeCutInfo(trashTypeCut, trashTypeCutRecyclePlace);
-                databaseReference.child(trashTypeCut).setValue(trashTypeCutInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Duomenys įsaugoti", Toast.LENGTH_LONG).show();
-                            showMainActivity();
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(), "Duomenys neįsaugoti", Toast.LENGTH_LONG).show();
-                            showMainActivity();
-                        }
-                    }
-                });
+                String trashTypeCut = editTypeCut.getText().toString().toUpperCase().toUpperCase(Locale.ROOT).trim();
+                String trashTypeCutRecyclePlace = editTrashTypeCutRecyclePlace.getText().toString().trim();
 
+                if (trashTypeCut.length() == 0 || trashTypeCutRecyclePlace.length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Užpildykite visus langelius", Toast.LENGTH_LONG).show();
+                } else {
+                    databaseReference.orderByChild("trashCut").equalTo(trashTypeCut).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()){
+                                Toast.makeText(getApplicationContext(), "Tokie duomenys jau yra duomenų bazėje", Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                progresBar.setVisibility(View.VISIBLE);
+                                ClassTrashTypeCutInfo trashTypeCutInfo = new ClassTrashTypeCutInfo(trashTypeCut, trashTypeCutRecyclePlace);
+                                databaseReference.child(trashTypeCut).setValue(trashTypeCutInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(getApplicationContext(), "Duomenys įsaugoti", Toast.LENGTH_LONG).show();
+                                            showMainActivity();
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "Duomenys neįsaugoti", Toast.LENGTH_LONG).show();
+                                            showMainActivity();
+                                        }
+                                    }
+                                });
+
+                            }
+                        }
+
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+                }
             }
         });
     }

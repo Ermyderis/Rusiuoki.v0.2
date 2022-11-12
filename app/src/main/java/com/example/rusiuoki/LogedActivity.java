@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +28,7 @@ public class LogedActivity extends AppCompatActivity {
     private String userID;
     private MaterialToolbar topBar;
     public String emailInLoged;
-    public CardView logedBarcodeCard, logedRegisterUser, logedItemContent;
+    public CardView logedBarcodeCard, logedRegisterUser, logedItemContent, logedItemByWord;
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -57,6 +56,15 @@ public class LogedActivity extends AppCompatActivity {
             }
         });
 
+        logedItemByWord = findViewById(R.id.logedItemByWord);
+        logedItemByWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openItemByWord();
+            }
+            });
+
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
@@ -66,7 +74,7 @@ public class LogedActivity extends AppCompatActivity {
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
+                ClassUser userProfile = snapshot.getValue(ClassUser.class);
                 if(userProfile != null){
                     emailInLoged = userProfile.email;
                     textViewLastName.setText(emailInLoged);
@@ -128,8 +136,14 @@ public class LogedActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    private void openItemByWord(){
+        Intent intent = new Intent(this, LogedTrashAddToDbByWord.class);
+        intent.putExtra("userEmail", emailInLoged);
+        startActivity(intent);
+        finish();
+    }
     private void openTrachYpeCut(){
-        Intent intent = new Intent(this, TrashTypeCut.class);
+        Intent intent = new Intent(this, LogedTrashTypeCut.class);
         intent.putExtra("userEmail", emailInLoged);
         startActivity(intent);
         finish();

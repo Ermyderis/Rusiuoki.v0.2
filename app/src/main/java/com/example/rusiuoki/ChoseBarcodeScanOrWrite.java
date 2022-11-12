@@ -94,7 +94,10 @@ public class ChoseBarcodeScanOrWrite extends AppCompatActivity implements View.O
         if (result != null) {
             if (result.getContents() != null) {
                 String barcodeForSearch = result.getContents().toString();
-                databaseReference.child(barcodeForSearch).addValueEventListener(new ValueEventListener() {
+
+
+
+                databaseReference.child(barcodeForSearch).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         BarCode barCode = snapshot.getValue(BarCode.class);
@@ -107,20 +110,17 @@ public class ChoseBarcodeScanOrWrite extends AppCompatActivity implements View.O
                             intent.putExtra("barCodeRecyclePlace", barCode.packageRecyclePlace.toString());
                             startActivity(intent);
                             finish();
-                            onStop();
                         }
                         else if (barCode != null && barCode.activityType.equals("notAproved"))
                         {
                             Toast.makeText(ChoseBarcodeScanOrWrite.this, "Duomenys laukia patvirtinimo" , Toast.LENGTH_LONG).show();
                             turnOnHome();
-                            onStop();
                         }
                         else{
                             Intent intent = new Intent(ChoseBarcodeScanOrWrite.this, BarCodeData.class);
                             intent.putExtra("barCodeContent", result.getContents());
                             startActivity(intent);
                             finish();
-                            onStop();
 
                         }
                     }

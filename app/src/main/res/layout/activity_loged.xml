@@ -165,7 +165,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    android:text="Įvesti atlieką identifikuojantį žodį"
+                    android:text="Įtraukti į duomenų bazę atlieką identifikuojantį žodį"
                     android:textAlignment="center"
                     android:textStyle="normal|bold" />
             </LinearLayout>

@@ -19,4 +19,9 @@
         <item>Kita</item>
 
     </string-array>
+
+    <string-array name="TrashCutCode">
+        <item>HDPE</item>
+        <item>PPT</item>
+    </string-array>
 </resources>

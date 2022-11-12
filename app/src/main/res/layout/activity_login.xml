@@ -29,7 +29,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:text="Login"
+        android:text="Prisijungti"
         android:textSize="30dp" />
 
     <EditText
@@ -41,19 +41,18 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:hint="Email" />
+        android:hint="Elektroninis paštas" />
 
     <EditText
         android:id="@+id/editLoginPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="50dp"
-        android:hint="Password"
-        android:inputType="textPassword"
         android:layout_below="@id/editLoginEmail"
-        />
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="16dp"
+        android:hint="Slaptažodis"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/buttonLogin"
@@ -63,7 +62,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="30dp"
-        android:text="Login" />
+        android:text="Prisijungti" />
 
     <ProgressBar
         android:id="@+id/progressBar"

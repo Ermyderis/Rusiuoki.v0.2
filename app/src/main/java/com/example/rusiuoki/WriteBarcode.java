@@ -71,7 +71,6 @@ public class WriteBarcode extends AppCompatActivity {
                         }
                         else{
                             Toast.makeText(WriteBarcode.this, "Rezultatų nerasta", Toast.LENGTH_LONG).show();
-                            turnOnHome();
                         }
                     }
 

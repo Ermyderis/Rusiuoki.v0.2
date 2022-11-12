@@ -15,13 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rusiuoki">
         <activity
-            android:name=".TrashTypeCutContentShow"
+            android:name=".LogedTrashAddToDbByWord"
             android:exported="false" />
         <activity
-            android:name=".TrasTypeCutContent"
+            android:name=".NotLogedTrashTypeCutContentShow"
             android:exported="false" />
         <activity
-            android:name=".TrashTypeCut"
+            android:name=".NotLogedTrasTypeCutSearch"
+            android:exported="false" />
+        <activity
+            android:name=".LogedTrashTypeCut"
             android:exported="false" />
         <activity
             android:name=".LogedEditableViewHolder"
