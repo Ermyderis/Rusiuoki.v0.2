@@ -28,7 +28,7 @@ public class LogedActivity extends AppCompatActivity {
     private String userID;
     private MaterialToolbar topBar;
     public String emailInLoged;
-    public CardView logedBarcodeCard, logedRegisterUser, logedItemContent, logedItemByWord;
+    public CardView logedBarcodeCard, logedRegisterUser, logedItemContent, logedItemByWord, logedLocationAdd;
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -63,7 +63,13 @@ public class LogedActivity extends AppCompatActivity {
                 openItemByWord();
             }
             });
-
+        logedLocationAdd = findViewById(R.id.logedLocationAdd);
+        logedLocationAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLogedLocationAdd();
+            }
+        });
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -74,7 +80,7 @@ public class LogedActivity extends AppCompatActivity {
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ClassUser userProfile = snapshot.getValue(ClassUser.class);
+                ModelUser userProfile = snapshot.getValue(ModelUser.class);
                 if(userProfile != null){
                     emailInLoged = userProfile.email;
                     textViewLastName.setText(emailInLoged);
@@ -138,6 +144,12 @@ public class LogedActivity extends AppCompatActivity {
     }
     private void openItemByWord(){
         Intent intent = new Intent(this, LogedTrashAddToDbByWord.class);
+        intent.putExtra("userEmail", emailInLoged);
+        startActivity(intent);
+        finish();
+    }
+    private void openLogedLocationAdd(){
+        Intent intent = new Intent(this, LogedAddLocation.class);
         intent.putExtra("userEmail", emailInLoged);
         startActivity(intent);
         finish();

@@ -1,14 +1,14 @@
 package com.example.rusiuoki;
 
-public class ClassUser {
+public class ModelUser {
     public String name;
     public String email;
     public String surename;
 
-    public ClassUser(){
+    public ModelUser(){
     }
 
-    public ClassUser(String name, String surename, String email){
+    public ModelUser(String name, String surename, String email){
         this.name = name;
         this.surename = surename;
         this.email = email;

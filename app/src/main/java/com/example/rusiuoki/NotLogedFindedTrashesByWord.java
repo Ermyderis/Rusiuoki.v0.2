@@ -45,7 +45,7 @@ public class NotLogedFindedTrashesByWord extends AppCompatActivity {
         String trashRecyclePlace = getIntent().getStringExtra("recyclePlace");
         textViewTrashRecyclePlace.setText(trashRecyclePlace);
 
-        if(trashRecyclePlace.equals("Didelių gabaritų aikštelė")){
+        if(trashRecyclePlace.equals("Atliekų atsikratymo aišktelė")){
             buttonMaps.setVisibility(View.VISIBLE);
         }
 

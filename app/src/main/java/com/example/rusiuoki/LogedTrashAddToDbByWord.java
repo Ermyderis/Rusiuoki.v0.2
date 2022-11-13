@@ -90,7 +90,7 @@ public class LogedTrashAddToDbByWord extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Tokia atlieka jau egzistuoja", Toast.LENGTH_LONG).show();
                             }
                             else{
-                                ClassTrashByWord trashByWord = new ClassTrashByWord(trashWord, trashThrowPlace);
+                                ModelTrashByWord trashByWord = new ModelTrashByWord(trashWord, trashThrowPlace);
                                 databaseReference.child(trashWord).setValue(trashByWord).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

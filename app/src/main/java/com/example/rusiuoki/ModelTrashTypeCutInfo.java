@@ -1,13 +1,13 @@
 package com.example.rusiuoki;
 
-public class ClassTrashTypeCutInfo {
+public class ModelTrashTypeCutInfo {
     public String trashCut;
     public String trashRecyclePlaceByCut;
 
-    public ClassTrashTypeCutInfo(){
+    public ModelTrashTypeCutInfo(){
     }
 
-    public ClassTrashTypeCutInfo(String trashCut, String trashRecyclePlaceByCut){
+    public ModelTrashTypeCutInfo(String trashCut, String trashRecyclePlaceByCut){
         this.trashCut = trashCut;
         this.trashRecyclePlaceByCut = trashRecyclePlaceByCut;
 

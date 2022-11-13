@@ -1,14 +1,14 @@
 package com.example.rusiuoki;
 
-public class ClassTrashByWord {
+public class ModelTrashByWord {
 
     public String trashWord;
     public String trashRecyclePlaceByWord;
 
-    public ClassTrashByWord(){
+    public ModelTrashByWord(){
     }
 
-    public ClassTrashByWord(String trashWord, String trashRecyclePlaceByWord){
+    public ModelTrashByWord(String trashWord, String trashRecyclePlaceByWord){
         this.trashWord = trashWord;
         this.trashRecyclePlaceByWord = trashRecyclePlaceByWord;
 

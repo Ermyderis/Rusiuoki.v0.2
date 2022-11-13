@@ -90,6 +90,7 @@ public class LogedDatabaseBarcodeList extends AppCompatActivity {
             finish();
         }
 
+        //Menu
         final TextView textViewLastName = findViewById(R.id.textViewLastName);
         String userEmail = getIntent().getStringExtra("userEmail");
         textViewLastName.setText(userEmail);

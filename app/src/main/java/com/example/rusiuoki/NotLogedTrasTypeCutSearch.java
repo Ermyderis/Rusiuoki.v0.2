@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -78,7 +77,7 @@ public class NotLogedTrasTypeCutSearch extends AppCompatActivity {
         databaseReference.child(spinerData).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ClassTrashTypeCutInfo trashTypeCutInfo = snapshot.getValue(ClassTrashTypeCutInfo.class);
+                ModelTrashTypeCutInfo trashTypeCutInfo = snapshot.getValue(ModelTrashTypeCutInfo.class);
                 if (trashTypeCutInfo != null){
                     Intent intent = new Intent(NotLogedTrasTypeCutSearch.this, NotLogedTrashTypeCutContentShow.class);
                     intent.putExtra("cut", trashTypeCutInfo.trashCut.toString());

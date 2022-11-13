@@ -93,7 +93,7 @@ public class LogedTrashTypeCut extends AppCompatActivity {
                             }
                             else{
                                 progresBar.setVisibility(View.VISIBLE);
-                                ClassTrashTypeCutInfo trashTypeCutInfo = new ClassTrashTypeCutInfo(trashTypeCut, trashTypeCutRecyclePlace);
+                                ModelTrashTypeCutInfo trashTypeCutInfo = new ModelTrashTypeCutInfo(trashTypeCut, trashTypeCutRecyclePlace);
                                 databaseReference.child(trashTypeCut).setValue(trashTypeCutInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

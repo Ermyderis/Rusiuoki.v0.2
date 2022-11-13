@@ -18,7 +18,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.zxing.common.StringUtils;
 
 public class NotLogedTrashByWordSearch extends AppCompatActivity {
 
@@ -78,7 +77,7 @@ public class NotLogedTrashByWordSearch extends AppCompatActivity {
             databaseReference.child(trashByWord).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    ClassTrashByWord trashByWord = snapshot.getValue(ClassTrashByWord.class);
+                    ModelTrashByWord trashByWord = snapshot.getValue(ModelTrashByWord.class);
                     if (trashByWord != null){
                         Intent intent = new Intent(NotLogedTrashByWordSearch.this, NotLogedFindedTrashesByWord.class);
                         intent.putExtra("trashWord", trashByWord.trashWord.toString());

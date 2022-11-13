@@ -24,4 +24,9 @@
         <item>HDPE</item>
         <item>PPT</item>
     </string-array>
+
+    <string-array name="Location">
+        <item>Atliekų atsikratymo aišktelė</item>
+        <item>Smulkios elektronikos atsikratymo vieta (Prekybos centre)</item>
+    </string-array>
 </resources>
