@@ -89,11 +89,6 @@ public class NotLogedTrasTypeCutSearch extends AppCompatActivity {
                 else{
                     Toast.makeText(NotLogedTrasTypeCutSearch.this, "Neegzistuoja", Toast.LENGTH_LONG).show();
                 }
-                //Intent intent = new Intent(TrasTypeCutContent.this, TrashTypeCutContentShow.class);
-                //intent.putExtra("cut", trashTypeCutInfo.trashCut.toString());
-                //intent.putExtra("recyclePlace", trashTypeCutInfo.trashRecyclePlaceByCut.toString());
-                //startActivity(intent);
-                //finish();
             }
 
             @Override

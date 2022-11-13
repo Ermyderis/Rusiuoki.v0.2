@@ -29,6 +29,14 @@
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/menu/loged_menu.xml" value="0.2109375" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/menu/nav_menu.xml" value="0.2109375" />
         <entry key="..\:/Users/dovyd/AndroidStudioProjects/Rusiuoki/app/src/main/res/menu/notloged_menu.xml" value="0.2109375" />
+        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_loged_trash_add_to_db_by_word.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_login.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_not_loged_finded_trashes_by_word.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_not_loged_trash_by_word_search.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_tras_type_cut_search.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_trash_type_cut.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_trash_type_cut_content_show.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_write_barcode.xml" value="0.358695652173913" />
       </map>
     </option>
   </component>

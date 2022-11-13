@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rusiuoki">
         <activity
-            android:name=".NotLogedFindedTrashesByWordList"
+            android:name=".NotLogedFindedTrashesByWord"
             android:exported="false" />
         <activity
             android:name=".NotLogedTrashByWordSearch"

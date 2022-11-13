@@ -1,37 +1,31 @@
 package com.example.rusiuoki;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-
-public class NotLogedFindedTrashesByWordList extends AppCompatActivity {
+public class NotLogedFindedTrashesByWord extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private String trashWord;
     private MaterialToolbar topBar;
-    private DatabaseReference databaseReference;
-    private FirebaseDatabase db;
+    private TextView textViewTrashName, textViewTrashRecyclePlace;
+    private Button buttonMaps;
+
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(NotLogedFindedTrashesByWordList.this, MainActivity.class));
+        startActivity(new Intent(NotLogedFindedTrashesByWord.this, MainActivity.class));
         finish();
     }
     @Override
@@ -39,9 +33,21 @@ public class NotLogedFindedTrashesByWordList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_not_loged_finded_trashes_by_word);
 
-        recyclerView = findViewById(R.id.dataByWordLoged);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        buttonMaps = findViewById(R.id.buttonMaps);
+        buttonMaps.setVisibility(View.GONE);
+
+        textViewTrashName = findViewById(R.id.textViewTrashName);
+        String trashWord = getIntent().getStringExtra("trashWord");
+        textViewTrashName.setText(trashWord);
+
+        textViewTrashRecyclePlace = findViewById(R.id.textViewTrashRecyclePlace);
+        String trashRecyclePlace = getIntent().getStringExtra("recyclePlace");
+        textViewTrashRecyclePlace.setText(trashRecyclePlace);
+
+        if(trashRecyclePlace.equals("Didelių gabaritų aikštelė")){
+            buttonMaps.setVisibility(View.VISIBLE);
+        }
 
         topBar = findViewById(R.id.topAppBar);
         topBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -58,11 +64,6 @@ public class NotLogedFindedTrashesByWordList extends AppCompatActivity {
                 return false;
             }
         });
-
-        String trashWord = getIntent().getStringExtra("trashWord");
-        Toast.makeText(NotLogedFindedTrashesByWordList.this, trashWord, Toast.LENGTH_LONG).show();
-        db = FirebaseDatabase.getInstance();
-        databaseReference = db.getReference("TrashByWord");
 
 
 

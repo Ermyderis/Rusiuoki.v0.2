@@ -1,5 +1,6 @@
 package com.example.rusiuoki;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -9,8 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.zxing.common.StringUtils;
 
 public class NotLogedTrashByWordSearch extends AppCompatActivity {
 
@@ -18,6 +26,7 @@ public class NotLogedTrashByWordSearch extends AppCompatActivity {
     private Button buttonContentSaveTrashByWord;
     private String trashByWord;
     private MaterialToolbar topBar;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +55,49 @@ public class NotLogedTrashByWordSearch extends AppCompatActivity {
         buttonContentSaveTrashByWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                trashByWord = editTextTrashByWord.getText().toString().trim();
-
-                Intent intent = new Intent(NotLogedTrashByWordSearch.this, NotLogedFindedTrashesByWordList.class);
-                intent.putExtra("trashWord", trashByWord);
-                startActivity(intent);
-                finish();
+                getDataByWord();
             }
         });
+    }
+
+    private void getDataByWord(){
+        trashByWord = editTextTrashByWord.getText().toString().trim();
+        boolean result = trashByWord.matches("[a-zA-Z]+");
+        if(trashByWord.length() == 0){
+            Toast.makeText(NotLogedTrashByWordSearch.this, "Užpildykite laukelį", Toast.LENGTH_LONG).show();
+        }
+        else if(trashByWord.length() >= 20){
+            Toast.makeText(NotLogedTrashByWordSearch.this, "Daugiausia gali būti 20 simbolių", Toast.LENGTH_LONG).show();
+        }
+        else if(result == false){
+            Toast.makeText(NotLogedTrashByWordSearch.this, "Žodis gali būti tik vienas ir tik raidės", Toast.LENGTH_LONG).show();
+        }
+        else{
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            databaseReference = database.getReference("TrashByWord");
+            databaseReference.child(trashByWord).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    ClassTrashByWord trashByWord = snapshot.getValue(ClassTrashByWord.class);
+                    if (trashByWord != null){
+                        Intent intent = new Intent(NotLogedTrashByWordSearch.this, NotLogedFindedTrashesByWord.class);
+                        intent.putExtra("trashWord", trashByWord.trashWord.toString());
+                        intent.putExtra("recyclePlace", trashByWord.trashRecyclePlaceByWord.toString());
+                        startActivity(intent);
+                        finish();
+                    }
+                    else{
+                        Toast.makeText(NotLogedTrashByWordSearch.this, "Neegzistuoja", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
     }
     private void turnOnLogin(){
         Intent intent = new Intent(this, LoginActivity.class);

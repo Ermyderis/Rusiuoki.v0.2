@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotLogedFindedTrashesByWordList">
+    tools:context=".NotLogedFindedTrashesByWord">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -22,22 +22,38 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/appBar"
-        android:id="@+id/dataByWordLoged"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <TextView
-        android:id="@+id/textViewEmptyList"
+
+        android:id="@+id/textViewTrashName"
         android:layout_width="match_parent"
-        android:layout_below="@+id/appBar"
         android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
-        android:visibility="gone"
         android:layout_marginRight="16dp"
-        android:text="Nerasta duomenų"
-        android:textSize="30dp" />
+        android:textSize="20dp"
+        android:hint="Viedroids" />
+    <TextView
+
+        android:id="@+id/textViewTrashRecyclePlace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTrashName"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="16dp"
+        android:textSize="20dp"
+        android:hint="Didelių gabaritų aikštelės" />
+
+    <Button
+        android:id="@+id/buttonMaps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTrashRecyclePlace"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:text="Didelių gabaritų aikštelės" />
+
 
 </RelativeLayout>

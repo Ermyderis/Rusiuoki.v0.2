@@ -55,30 +55,37 @@ public class WriteBarcode extends AppCompatActivity {
         searchByBarCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String barcodeForSearch = barcodeEditText.getText().toString();
-                databaseReference.child(barcodeForSearch).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        BarCode barCode = snapshot.getValue(BarCode.class);
-                        if(barCode != null){
-                            Intent intent = new Intent(WriteBarcode.this, BarcodeDataExist.class);
-                            intent.putExtra("fullBarcode", barcodeForSearch);
-                            intent.putExtra("barCodePackageName", barCode.packageName.toString());
-                            intent.putExtra("barCodePackageType", barCode.packageType.toString());
-                            intent.putExtra("barCodeRecyclePlace", barCode.packageRecyclePlace.toString());
-                            startActivity(intent);
-                            finish();
+                String barcodeForSearch = barcodeEditText.getText().toString().trim();
+                if (barcodeForSearch.length() == 0){
+                    Toast.makeText(WriteBarcode.this, "Užpildykite laukelį", Toast.LENGTH_LONG).show();
+                }
+                else if (barcodeForSearch.length() >= 20){
+                    Toast.makeText(WriteBarcode.this, "Daugiausia gali būti 20 simbolių", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    databaseReference.child(barcodeForSearch).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            BarCode barCode = snapshot.getValue(BarCode.class);
+                            if(barCode != null){
+                                Intent intent = new Intent(WriteBarcode.this, BarcodeDataExist.class);
+                                intent.putExtra("fullBarcode", barcodeForSearch);
+                                intent.putExtra("barCodePackageName", barCode.packageName.toString());
+                                intent.putExtra("barCodePackageType", barCode.packageType.toString());
+                                intent.putExtra("barCodeRecyclePlace", barCode.packageRecyclePlace.toString());
+                                startActivity(intent);
+                                finish();
+                            }
+                            else{
+                                Toast.makeText(WriteBarcode.this, "Rezultatų nerasta", Toast.LENGTH_LONG).show();
+                            }
                         }
-                        else{
-                            Toast.makeText(WriteBarcode.this, "Rezultatų nerasta", Toast.LENGTH_LONG).show();
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
                         }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                    }
-                });
-
+                    });
+                }
             }
         });
     }
