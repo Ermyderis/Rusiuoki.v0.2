@@ -13,4 +13,12 @@ public class ClassTrashByWord {
         this.trashRecyclePlaceByWord = trashRecyclePlaceByWord;
 
     }
+
+    public String getTrashWord() {
+        return trashWord;
+    }
+
+    public String getTrashRecyclePlaceByWord() {
+        return trashRecyclePlaceByWord;
+    }
 }

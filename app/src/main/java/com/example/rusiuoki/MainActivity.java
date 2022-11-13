@@ -35,6 +35,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        itemByWord = findViewById(R.id.itemByWord);
+        itemByWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openItemByWord();
+            }
+        });
+
         topBar = findViewById(R.id.topAppBar);
         topBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -70,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
     }
     private void openCutContent(){
         Intent intent = new Intent(this, NotLogedTrasTypeCutSearch.class);
+        startActivity(intent);
+        finish();
+    }
+    private void openItemByWord(){
+        Intent intent = new Intent(this, NotLogedTrashByWordSearch.class);
         startActivity(intent);
         finish();
     }

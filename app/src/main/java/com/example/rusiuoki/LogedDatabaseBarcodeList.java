@@ -34,7 +34,6 @@ public class LogedDatabaseBarcodeList extends AppCompatActivity {
     private FirebaseDatabase db;
     private TextView textViewEmptyList;
     private MaterialToolbar topBar;
-    boolean check = false;
 
     @Override
     public void onBackPressed() {
@@ -69,7 +68,6 @@ public class LogedDatabaseBarcodeList extends AppCompatActivity {
                     if (barCode != null && barCode.activityType.toString().equals("notAproved")) {
                         textViewEmptyList.setVisibility(View.GONE);
                         barcodeArrayList.add(barCode);
-                        check = true;
                     }
 
 
