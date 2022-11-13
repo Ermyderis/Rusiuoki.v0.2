@@ -49,6 +49,14 @@ public class NotLogedFindedTrashesByWord extends AppCompatActivity {
             buttonMaps.setVisibility(View.VISIBLE);
         }
 
+        buttonMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NotLogedFindedTrashesByWord.this, Map.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         topBar = findViewById(R.id.topAppBar);
         topBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override

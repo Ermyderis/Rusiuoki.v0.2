@@ -3,6 +3,8 @@
     package="com.example.rusiuoki">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -14,6 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rusiuoki">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBMSlAd2XSRdV5R0aSz2LlN-QwrE5IEcGk"></meta-data>
+        <activity
+            android:name=".Map"
+            android:exported="false" />
         <activity
             android:name=".NotLogedFindedTrashesByWord"
             android:exported="false" />
