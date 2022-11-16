@@ -48,7 +48,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:hint="Lokacijos pavadinimas" />
+        android:hint="Lokacijos adresas" />
 
     <EditText
         android:id="@+id/editLatitude"
@@ -58,8 +58,10 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:hint="Platuma"
-        />
+        android:inputType="numberDecimal|numberSigned"
+        android:digits="0123456789-."
+        android:maxLength="11"
+        android:hint="Platuma" />
 
     <EditText
         android:id="@+id/editLongitude"
@@ -69,6 +71,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
+        android:inputType="numberDecimal|numberSigned"
+        android:digits="0123456789-."
+        android:maxLength="11"
         android:hint="Ilguma"
         />
 

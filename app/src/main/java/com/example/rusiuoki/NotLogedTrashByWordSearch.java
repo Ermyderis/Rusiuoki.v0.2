@@ -27,6 +27,13 @@ public class NotLogedTrashByWordSearch extends AppCompatActivity {
     private MaterialToolbar topBar;
     DatabaseReference databaseReference;
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(NotLogedTrashByWordSearch.this, MainActivity.class));
+        finish();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

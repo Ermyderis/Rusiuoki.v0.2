@@ -21,13 +21,13 @@
         android:id="@+id/editBarCodeData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:editable="false"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="50dp"
-        android:hint="Brūkšninis kodas"
         android:layout_below="@id/textView"
-        />
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="16dp"
+        android:editable="false"
+        android:hint="Brūkšninis kodas"
+        android:minHeight="48dp" />
 
     <EditText
 
@@ -38,7 +38,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:hint="Pakuotės pavadinimas" />
+        android:hint="Pakuotės pavadinimas"
+        android:maxLength="30"
+        android:minHeight="48dp" />
 
     <TextView
 
@@ -82,7 +84,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="16dp"
-        android:hint="Atliekos kategorija" />
+        android:hint="Atliekos kategorija"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/buttonSave"

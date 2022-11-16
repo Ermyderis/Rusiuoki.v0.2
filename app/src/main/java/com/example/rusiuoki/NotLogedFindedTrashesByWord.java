@@ -19,7 +19,8 @@ public class NotLogedFindedTrashesByWord extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MaterialToolbar topBar;
     private TextView textViewTrashName, textViewTrashRecyclePlace;
-    private Button buttonMaps;
+    private Button buttonMapsAtliekos;
+    private Button buttonMapsElektronika;
 
 
     @Override
@@ -34,8 +35,12 @@ public class NotLogedFindedTrashesByWord extends AppCompatActivity {
         setContentView(R.layout.activity_not_loged_finded_trashes_by_word);
 
 
-        buttonMaps = findViewById(R.id.buttonMaps);
-        buttonMaps.setVisibility(View.GONE);
+        buttonMapsAtliekos = findViewById(R.id.buttonMapsAtliekos);
+        buttonMapsAtliekos.setVisibility(View.GONE);
+
+
+        buttonMapsElektronika = findViewById(R.id.buttonMapsElektronika);
+        buttonMapsElektronika.setVisibility(View.GONE);
 
         textViewTrashName = findViewById(R.id.textViewTrashName);
         String trashWord = getIntent().getStringExtra("trashWord");
@@ -46,10 +51,15 @@ public class NotLogedFindedTrashesByWord extends AppCompatActivity {
         textViewTrashRecyclePlace.setText(trashRecyclePlace);
 
         if(trashRecyclePlace.equals("Atliekų atsikratymo aišktelė")){
-            buttonMaps.setVisibility(View.VISIBLE);
+            buttonMapsAtliekos.setVisibility(View.VISIBLE);
         }
 
-        buttonMaps.setOnClickListener(new View.OnClickListener() {
+        if(trashRecyclePlace.equals("Smulkios elektronikos atsikratymo vieta (Prekybos centre)")){
+            buttonMapsElektronika.setVisibility(View.VISIBLE);
+        }
+
+
+        buttonMapsAtliekos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(NotLogedFindedTrashesByWord.this, Map.class);

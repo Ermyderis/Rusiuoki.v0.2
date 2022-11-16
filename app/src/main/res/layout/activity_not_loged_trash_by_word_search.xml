@@ -42,7 +42,9 @@
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
         android:hint="Veidrodis"
-        />
+        android:maxLength="30"
+        android:inputType="text"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/buttonContentSaveTrashByWord"

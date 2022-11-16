@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -39,6 +40,13 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     private FirebaseDatabase db;
     private ArrayList<LatLng> locationArrayList;
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(Map.this, MainActivity.class));
+        finish();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,8 +95,8 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     ModelLocation modelLocation = dataSnapshot.getValue(ModelLocation.class);
                     if (modelLocation != null && modelLocation.locationType.toString().equals("Atliekų atsikratymo aišktelė")) {
-                        String latitude = modelLocation.locationLatitude.toString().replaceAll(",",".");
-                        String longitude = modelLocation.locationLongitude.toString().replaceAll(",",".");
+                        String latitude = modelLocation.locationLatitude.toString().replace(",",".");
+                        String longitude = modelLocation.locationLongitude.toString().replace(",",".");
                         LatLng sss = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
                         locationArrayList.add(sss);
                     }

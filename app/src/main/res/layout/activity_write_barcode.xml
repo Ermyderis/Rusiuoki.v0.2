@@ -27,9 +27,9 @@
         android:id="@+id/barcodeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
         android:ems="10"
+        android:maxLength="12"
         android:inputType="number" />
 
     <Button

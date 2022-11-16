@@ -29,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Locale;
 
 public class LogedAddLocation extends AppCompatActivity {
-    private EditText editLocationName, editLatitude, editLongitude;
+    private EditText editLocationAdres, editLatitude, editLongitude;
     private Spinner spinnerLocation;
     private Button buttonSaveLocation;
     private MaterialToolbar topBar;
@@ -48,7 +48,7 @@ public class LogedAddLocation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loged_add_location);
 
-        editLocationName = findViewById(R.id.editLocationName);
+        editLocationAdres = findViewById(R.id.editLocationName);
         editLatitude = findViewById(R.id.editLatitude);
         editLongitude = findViewById(R.id.editLongitude);
         spinnerLocation = findViewById(R.id.spinnerLocation);
@@ -92,9 +92,9 @@ public class LogedAddLocation extends AppCompatActivity {
         });
     }
     private void saveData() {
-        String locationName = editLocationName.getText().toString().toUpperCase().toUpperCase(Locale.ROOT).trim();
-        String latitude = editLatitude.getText().toString().trim();
-        String longitude = editLongitude.getText().toString().trim();
+        String locationName = editLocationAdres.getText().toString().toUpperCase().toUpperCase(Locale.ROOT).trim();
+        String latitude = editLatitude.getText().toString().trim().replace(".",",");
+        String longitude = editLongitude.getText().toString().trim().replace(".",",");
         String location = spinnerLocation.getSelectedItem().toString();
 
         if (locationName.length() == 0 || latitude.length() == 0 || longitude.length() == 0) {
@@ -108,16 +108,16 @@ public class LogedAddLocation extends AppCompatActivity {
                     } else {
                         progresBar.setVisibility(View.VISIBLE);
                         ModelLocation locationModel = new ModelLocation(locationName, latitude, longitude, location);
-                        Toast.makeText(getApplicationContext(), locationModel.locationName, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), locationModel.locationAdres, Toast.LENGTH_LONG).show();
                         databaseReference.child(locationName).setValue(locationModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Duomenys įsaugoti", Toast.LENGTH_LONG).show();
-                                    showMainActivity();
+                                    Toast.makeText(getApplicationContext(), latitude + " " + longitude, Toast.LENGTH_LONG).show();
+                                    turnOnHome();
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Duomenys neįsaugoti", Toast.LENGTH_LONG).show();
-                                    showMainActivity();
+                                    turnOnHome();
                                 }
                             }
                         });

@@ -124,7 +124,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 if(task.isSuccessful()){
                                     Toast.makeText(RegisterActivity.this, "Vartotojas užregistruotas", Toast.LENGTH_LONG).show();
                                     progresBar.setVisibility(View.GONE);
-                                    //editPassword.setText("");
+                                    FirebaseAuth.getInstance().signOut();
+                                    showMainActivity();
                                 }
                                 else{
                                     Toast.makeText(RegisterActivity.this, "Vartotojo nebuvo galima užregistruoti", Toast.LENGTH_LONG).show();
