@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,11 +27,12 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LogedTrashAddToDbByWord extends AppCompatActivity {
 
-    private EditText edittextTrashWord, edittextTrashThrowPlace;
+    private EditText edittextTrashWord;
     private Button buttonContentSaveTrashCutInfo;
     private String trashWord, trashThrowPlace;
     private DatabaseReference databaseReference;
     private MaterialToolbar topBar;
+    private Spinner spinnerTrashThrowPlace;
 
 
     @Override
@@ -46,7 +49,11 @@ public class LogedTrashAddToDbByWord extends AppCompatActivity {
 
         buttonContentSaveTrashCutInfo = findViewById(R.id.buttonContentSaveTrashCutInfo);
         edittextTrashWord = findViewById(R.id.edittextTrashWord);
-        edittextTrashThrowPlace = findViewById(R.id.edittextTrashThrowPlace);
+
+        spinnerTrashThrowPlace = findViewById(R.id.spinnerTrashThrowPlace);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.RecyclePlace, android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTrashThrowPlace.setAdapter(adapter1);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("TrashByWord");
@@ -77,8 +84,8 @@ public class LogedTrashAddToDbByWord extends AppCompatActivity {
         buttonContentSaveTrashCutInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                trashWord = edittextTrashWord.getText().toString().trim();
-                trashThrowPlace = edittextTrashThrowPlace.getText().toString().trim();
+                trashWord = edittextTrashWord.getText().toString().toLowerCase().trim();
+                trashThrowPlace = spinnerTrashThrowPlace.getSelectedItem().toString();
 
                 if (trashWord.length() == 0 || trashThrowPlace.length() == 0) {
                     Toast.makeText(getApplicationContext(), "Užpildykite visus langelius", Toast.LENGTH_LONG).show();

@@ -20,9 +20,9 @@ import java.util.ArrayList;
 public class BarcodeItemsAdapter extends RecyclerView.Adapter<BarcodeItemsAdapter.MyViewHolder>{
 
     Context context;
-    ArrayList<BarCode> barcodeArrayList;
+    ArrayList<ModelBarCode> barcodeArrayList;
 
-    public BarcodeItemsAdapter(Context context, ArrayList<BarCode> barcodeArrayList) {
+    public BarcodeItemsAdapter(Context context, ArrayList<ModelBarCode> barcodeArrayList) {
         this.context = context;
         this.barcodeArrayList = barcodeArrayList;
     }
@@ -37,7 +37,7 @@ public class BarcodeItemsAdapter extends RecyclerView.Adapter<BarcodeItemsAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder,int position) {
-        final BarCode barcode = barcodeArrayList.get(position);
+        final ModelBarCode barcode = barcodeArrayList.get(position);
 
         holder.barCode.setText(barcode.barCode);
         holder.packageName.setText(barcode.packageName);

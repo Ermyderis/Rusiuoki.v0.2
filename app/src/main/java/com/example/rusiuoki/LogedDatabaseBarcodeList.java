@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,12 +22,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.EventListener;
 
 public class LogedDatabaseBarcodeList extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ArrayList<BarCode> barcodeArrayList;
+    private ArrayList<ModelBarCode> barcodeArrayList;
     private BarcodeItemsAdapter myAdapter;
     private DatabaseReference databaseReference;
     private FirebaseDatabase db;
@@ -56,7 +54,7 @@ public class LogedDatabaseBarcodeList extends AppCompatActivity {
         textViewEmptyList.setVisibility(View.VISIBLE);
         db = FirebaseDatabase.getInstance();
         databaseReference = db.getReference("BarcodeDataByUsers");
-        barcodeArrayList = new ArrayList<BarCode>();
+        barcodeArrayList = new ArrayList<ModelBarCode>();
         myAdapter = new BarcodeItemsAdapter(LogedDatabaseBarcodeList.this, barcodeArrayList);
         recyclerView.setAdapter(myAdapter);
 
@@ -64,7 +62,7 @@ public class LogedDatabaseBarcodeList extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    BarCode barCode = dataSnapshot.getValue(BarCode.class);
+                    ModelBarCode barCode = dataSnapshot.getValue(ModelBarCode.class);
                     if (barCode != null && barCode.activityType.toString().equals("notAproved")) {
                         textViewEmptyList.setVisibility(View.GONE);
                         barcodeArrayList.add(barCode);

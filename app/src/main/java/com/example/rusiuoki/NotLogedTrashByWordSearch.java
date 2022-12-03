@@ -67,7 +67,7 @@ public class NotLogedTrashByWordSearch extends AppCompatActivity {
     }
 
     private void getDataByWord(){
-        trashByWord = editTextTrashByWord.getText().toString().trim();
+        trashByWord = editTextTrashByWord.getText().toString().toLowerCase().trim();
         boolean result = trashByWord.matches("[a-zA-Z]+");
         if(trashByWord.length() == 0){
             Toast.makeText(NotLogedTrashByWordSearch.this, "Užpildykite laukelį", Toast.LENGTH_LONG).show();

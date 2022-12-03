@@ -22,7 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegisterActivity extends AppCompatActivity {
+public class LogedRegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private EditText editPassword, editRPassword, editEmail, editName, editSurename;
@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(RegisterActivity.this, LogedActivity.class));
+        startActivity(new Intent(LogedRegisterActivity.this, LogedActivity.class));
         finish();
     }
     @Override
@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.logedout_menu:
                         FirebaseAuth.getInstance().signOut();
-                        Toast.makeText(RegisterActivity.this, "Atsijungta nuo paskyros", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LogedRegisterActivity.this, "Atsijungta nuo paskyros", Toast.LENGTH_LONG).show();
                         showMainActivity();
                         return true;
                     case R.id.main_menu:
@@ -90,7 +90,14 @@ public class RegisterActivity extends AppCompatActivity {
         String name = editName.getText().toString().trim();
         String surename = editSurename.getText().toString().trim();
 
-
+        char element;
+        int digit = 0;
+        for(int index = 0; index < password.length(); index++ ){
+            element = password.charAt( index );
+            if( Character.isDigit(element) ){
+                digit++;
+            }
+        }
 
         if (name.isEmpty() || surename.isEmpty() ||password.isEmpty() || email.isEmpty() || rPassword.isEmpty()) {
             Toast.makeText(this, "Užpildykite visus langelius", Toast.LENGTH_LONG).show();
@@ -104,8 +111,17 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Elektroninis paštas neatitinka modelio", Toast.LENGTH_LONG).show();
             return;
         }
-        else if (password.length() < 6){
+        else if (password.length() < 8){
             Toast.makeText(this, "Slaptažodį turi sudaryti bet 6 simboliai", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else if( digit < 2 ){
+            Toast.makeText(this, "Slaptažodis turi turėti bent 2 skaičius", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if( !password.matches("[a-zA-Z0-9]+") ){
+            /* A non-alphanumeric character was found, return false */
+            Toast.makeText(this, "Slaptažodis turi turėti ir skaičius ir raides", Toast.LENGTH_LONG).show();
             return;
         }
         else {
@@ -122,13 +138,13 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
 
                                 if(task.isSuccessful()){
-                                    Toast.makeText(RegisterActivity.this, "Vartotojas užregistruotas", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LogedRegisterActivity.this, "Vartotojas užregistruotas", Toast.LENGTH_LONG).show();
                                     progresBar.setVisibility(View.GONE);
                                     FirebaseAuth.getInstance().signOut();
                                     showMainActivity();
                                 }
                                 else{
-                                    Toast.makeText(RegisterActivity.this, "Vartotojo nebuvo galima užregistruoti", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LogedRegisterActivity.this, "Vartotojo nebuvo galima užregistruoti", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -136,7 +152,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        Toast.makeText(RegisterActivity.this, "Klaida registruojant vartotoją", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LogedRegisterActivity.this, "Klaida registruojant vartotoją", Toast.LENGTH_LONG).show();
                     }
                 }
             });

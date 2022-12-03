@@ -1,16 +1,16 @@
 package com.example.rusiuoki;
 
-public class BarCode {
+public class ModelBarCode {
     public String barCode;
     public String packageName;
     public String packageType;
     public String packageRecyclePlace;
     public String activityType;
 
-    public BarCode(){
+    public ModelBarCode(){
     }
 
-    public BarCode (String barCode, String packageName, String packageType,  String packageRecyclePlace, String activityType){
+    public ModelBarCode(String barCode, String packageName, String packageType, String packageRecyclePlace, String activityType){
         this.barCode = barCode;
         this.packageName = packageName;
         this.packageType = packageType;

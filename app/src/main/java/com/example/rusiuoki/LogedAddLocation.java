@@ -92,7 +92,9 @@ public class LogedAddLocation extends AppCompatActivity {
         });
     }
     private void saveData() {
-        String locationName = editLocationAdres.getText().toString().toUpperCase().toUpperCase(Locale.ROOT).trim();
+        String locationNameRaw= editLocationAdres.getText().toString().toUpperCase().toUpperCase(Locale.ROOT).trim();
+        String locationNameNormal = locationNameRaw;
+        String locationName = locationNameRaw.replaceAll("[^a-zA-Z0-9]", "");
         String latitude = editLatitude.getText().toString().trim().replace(".",",");
         String longitude = editLongitude.getText().toString().trim().replace(".",",");
         String location = spinnerLocation.getSelectedItem().toString();
@@ -107,7 +109,7 @@ public class LogedAddLocation extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Tokie duomenys jau yra duomenų bazėje", Toast.LENGTH_LONG).show();
                     } else {
                         progresBar.setVisibility(View.VISIBLE);
-                        ModelLocation locationModel = new ModelLocation(locationName, latitude, longitude, location);
+                        ModelLocation locationModel = new ModelLocation(locationNameNormal, latitude, longitude, location);
                         Toast.makeText(getApplicationContext(), locationModel.locationAdres, Toast.LENGTH_LONG).show();
                         databaseReference.child(locationName).setValue(locationModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override

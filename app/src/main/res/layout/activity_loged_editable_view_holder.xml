@@ -35,6 +35,7 @@
         android:layout_below="@id/holderTexxView2"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:maxLength="100"
         android:background="@drawable/rounded"
         android:gravity="center" />
 

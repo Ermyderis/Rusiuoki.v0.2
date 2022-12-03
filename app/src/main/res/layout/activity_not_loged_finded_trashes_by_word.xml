@@ -31,8 +31,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:textSize="20dp"
-        android:hint="Viedroids" />
+        android:hint="Viedroids"
+        android:textSize="20dp" />
+
     <TextView
 
         android:id="@+id/textViewTrashRecyclePlace"
@@ -42,8 +43,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:textSize="20dp"
-        android:hint="Didelių gabaritų aikštelės" />
+        android:hint="Didelių gabaritų aikštelės"
+        android:maxLength="100"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/buttonMapsAtliekos"

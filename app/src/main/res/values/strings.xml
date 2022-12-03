@@ -25,6 +25,11 @@
         <item>PPT</item>
     </string-array>
 
+    <string-array name="RecyclePlace">
+        <item>Smulkios elektronikos atsikratymo vieta (Prekybos centre)</item>
+        <item>Atliekų atsikratymo aišktelė</item>
+    </string-array>
+
     <string-array name="Location">
         <item>Atliekų atsikratymo aišktelė</item>
         <item>Smulkios elektronikos atsikratymo vieta (Prekybos centre)</item>

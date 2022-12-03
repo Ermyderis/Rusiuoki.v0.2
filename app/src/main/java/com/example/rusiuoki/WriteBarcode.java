@@ -66,7 +66,7 @@ public class WriteBarcode extends AppCompatActivity {
                     databaseReference.child(barcodeForSearch).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            BarCode barCode = snapshot.getValue(BarCode.class);
+                            ModelBarCode barCode = snapshot.getValue(ModelBarCode.class);
                             if(barCode != null){
                                 Intent intent = new Intent(WriteBarcode.this, BarcodeDataExist.class);
                                 intent.putExtra("fullBarcode", barcodeForSearch);

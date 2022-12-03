@@ -47,18 +47,17 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:hint="Veidrodis"
-        />
+        android:maxLength="50"
+        android:hint="Veidrodis" />
 
-    <EditText
-        android:id="@+id/edittextTrashThrowPlace"
+    <Spinner
+        android:id="@+id/spinnerTrashThrowPlace"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/edittextTrashWord"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:hint="Didelių gabaritų aikštelės"
         />
 
 
@@ -66,7 +65,7 @@
         android:id="@+id/buttonContentSaveTrashCutInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edittextTrashThrowPlace"
+        android:layout_below="@id/spinnerTrashThrowPlace"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="30dp"

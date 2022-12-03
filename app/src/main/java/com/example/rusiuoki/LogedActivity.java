@@ -101,7 +101,7 @@ public class LogedActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(LogedActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(LogedActivity.this, LogedRegisterActivity.class);
                 intent.putExtra("userEmail", emailInLoged);
                 startActivity(intent);
                 finish();

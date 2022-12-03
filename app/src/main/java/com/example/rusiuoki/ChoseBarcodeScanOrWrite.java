@@ -100,7 +100,7 @@ public class ChoseBarcodeScanOrWrite extends AppCompatActivity implements View.O
                 databaseReference.child(barcodeForSearch).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        BarCode barCode = snapshot.getValue(BarCode.class);
+                        ModelBarCode barCode = snapshot.getValue(ModelBarCode.class);
                         if(barCode != null && barCode.activityType.equals("AprovedTrue"))
                         {
                             Intent intent = new Intent(ChoseBarcodeScanOrWrite.this, BarcodeDataExist.class);
