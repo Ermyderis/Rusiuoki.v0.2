@@ -63,6 +63,7 @@ public class NotLogedFindedTrashesByWord extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(NotLogedFindedTrashesByWord.this, Map.class);
+                intent.putExtra("trashPlace", "Atliekų atsikratymo aišktelė");
                 startActivity(intent);
                 finish();
             }
@@ -72,6 +73,7 @@ public class NotLogedFindedTrashesByWord extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(NotLogedFindedTrashesByWord.this, Map.class);
+                intent.putExtra("trashPlace","Smulkios elektronikos atsikratymo vieta (Prekybos centre)");
                 startActivity(intent);
                 finish();
             }

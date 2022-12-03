@@ -91,7 +91,8 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     ModelLocation modelLocation = dataSnapshot.getValue(ModelLocation.class);
-                    if (modelLocation != null && modelLocation.locationType.toString().equals("Atliekų atsikratymo aišktelė")) {
+                    String trashPlace = getIntent().getStringExtra("trashPlace");
+                    if (modelLocation != null && modelLocation.locationType.toString().equals(trashPlace)) {
                         String latitude = modelLocation.locationLatitude.toString().replace(",",".");
                         String longitude = modelLocation.locationLongitude.toString().replace(",",".");
                         LatLng sss = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
