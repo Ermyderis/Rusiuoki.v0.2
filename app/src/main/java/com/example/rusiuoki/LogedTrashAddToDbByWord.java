@@ -57,8 +57,6 @@ public class LogedTrashAddToDbByWord extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("TrashByWord");
-        
-
 
         final TextView textViewLastName = findViewById(R.id.textViewLastName);
         String userEmail = getIntent().getStringExtra("userEmail");

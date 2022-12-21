@@ -86,7 +86,7 @@ public class NotLogedTrasTypeCutSearch extends AppCompatActivity {
                     finish();
                 }
                 else{
-                    Toast.makeText(NotLogedTrasTypeCutSearch.this, "Neegzistuoja", Toast.LENGTH_LONG).show();
+                    Toast.makeText(NotLogedTrasTypeCutSearch.this, "Nerasta", Toast.LENGTH_LONG).show();
                 }
             }
 

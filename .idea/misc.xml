@@ -40,14 +40,17 @@
         <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_login.xml" value="0.358695652173913" />
         <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_map.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_not_loged_finded_trashes_by_word.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_not_loged_finded_trashes_by_word.xml" value="0.25" />
         <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_not_loged_trash_by_word_search.xml" value="0.358695652173913" />
         <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_register.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_tras_type_cut_search.xml" value="0.358695652173913" />
         <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_trash_type_cut.xml" value="0.358695652173913" />
         <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_trash_type_cut_content_show.xml" value="0.358695652173913" />
         <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/activity_write_barcode.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/item.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/layout/trash_by_word_item.xml" value="0.18478260869565216" />
+        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/menu/loged_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/dovyd/Desktop/Git rusiuokiu/Rusiuoki.v0.2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2085" />
       </map>
     </option>
   </component>

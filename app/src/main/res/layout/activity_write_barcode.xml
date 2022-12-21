@@ -29,8 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:ems="10"
-        android:maxLength="12"
-        android:inputType="number" />
+        android:inputType="number"
+        android:maxLength="20" />
 
     <Button
         android:id="@+id/searchByBarCode"

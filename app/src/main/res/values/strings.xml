@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Rusiuoki</string>
+    <string name="app_name">Rūšiuoki.V0.2</string>
 
     <string-array name="TrashType">
         <item>-Pasirinkti-</item>
@@ -21,8 +21,17 @@
     </string-array>
 
     <string-array name="TrashCutCode">
+        <item>PET</item>
+        <item>PAP</item>
+        <item>GL</item>
         <item>HDPE</item>
-        <item>PPT</item>
+        <item>PVC</item>
+        <item>LDPE</item>
+        <item>PP</item>
+        <item>PS</item>
+        <item>OTHER</item>
+        <item>FE</item>
+        <item>ALU</item>
     </string-array>
 
     <string-array name="RecyclePlace">

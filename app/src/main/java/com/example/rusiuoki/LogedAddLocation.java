@@ -110,12 +110,11 @@ public class LogedAddLocation extends AppCompatActivity {
                     } else {
                         progresBar.setVisibility(View.VISIBLE);
                         ModelLocation locationModel = new ModelLocation(locationNameNormal, latitude, longitude, location);
-                        Toast.makeText(getApplicationContext(), locationModel.locationAdres, Toast.LENGTH_LONG).show();
                         databaseReference.child(locationName).setValue(locationModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), latitude + " " + longitude, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Duomenys įsaugoti: " + latitude + " " + longitude, Toast.LENGTH_LONG).show();
                                     turnOnHome();
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Duomenys neįsaugoti", Toast.LENGTH_LONG).show();
