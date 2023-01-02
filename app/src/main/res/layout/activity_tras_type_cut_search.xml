@@ -30,7 +30,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:text="Įveskite pakuotės tipą identifikuojantį trumpinimą"
+        android:text="Pasirinkite pakuotės tipą identifikuojantį trumpinimą"
         android:textSize="30dp" />
 
     <Spinner

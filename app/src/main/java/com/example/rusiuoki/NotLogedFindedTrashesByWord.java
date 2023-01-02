@@ -93,10 +93,6 @@ public class NotLogedFindedTrashesByWord extends AppCompatActivity {
                 return false;
             }
         });
-
-
-
-
     }
 
     private void turnOnLogin(){

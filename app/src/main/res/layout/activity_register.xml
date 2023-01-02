@@ -48,7 +48,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="16dp"
-        android:hint="Email" />
+        android:hint="Elektroninis paštas" />
 
     <EditText
         android:id="@+id/registerName"
